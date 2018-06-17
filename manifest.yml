@@ -1,0 +1,27 @@
+---
+language: mono
+default_versions:
+dependency_deprecation_dates:
+dependencies:
+- name: mono
+  version: 4.6.2.16
+  uri: https://cdn.mendix.com/mx-buildpack/mono-4.6.2.16-mx.tar.gz
+  sha256: 9d1c3294b4cfe81b28e7155d3320e41251f187924aaaf51b16b4394fc99802e3
+  cf_stacks:
+  - cflinuxfs2
+- name: xcruntime
+  version: 5.0.10
+  uri: https://storage.googleapis.com/dlavoie-xcruntime/xcruntime-5.0.10-bin.tar.gz
+  sha256: f48e761384511faba3ac3db263cf70608808906f705e8e14abd9148a39584f64
+  cf_stacks:
+  - cflinuxfs2
+include_files:
+  - README.md
+  - VERSION
+  - bin/detect
+  - bin/compile
+  - bin/supply
+  - bin/finalize
+  - bin/release
+  - manifest.yml
+pre_package: scripts/build.sh

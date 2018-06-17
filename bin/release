@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# bin/release <build-dir>
+# This script provides feedback metadata to Cloud Foundry indicating how the app should be executed
+
+BUILD_DIR=$1
+XCR_FILE=`ls $BUILD_DIR/*.xcr | xargs -n 1 basename`
+XCR_PROPERTIES=`ls $BUILD_DIR/*.xcproperties | xargs -n 1 basename`
+
+echo -e "---\ndefault_process_types:\n  web: set -x && cd /home/vcap/app/.xc-buildpack/xc-runtime/ && mono xcruntime.exe /home/vcap/app/$XCR_FILE /home/vcap/app/$XCR_PROPERTIES"
